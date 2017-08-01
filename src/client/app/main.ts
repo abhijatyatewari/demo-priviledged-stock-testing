@@ -1,35 +1,15 @@
-/**
- * Bootstraps the application and makes the ROUTER_PROVIDERS and the APP_BASE_HREF available to it.
- * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
- */
-import { enableProdMode } from '@angular/core';
-// The browser platform with a compiler
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-// Load i18n providers
-// import { TranslationProviders } from './i18n.providers';
+import { enableProdMode } from '@angular/core';
+import BootModule from './modules/boot/boot.module';
 
-// The app module
-import { AppModule } from './app.module';
+const PRODUCTION_BUILD: string = 'prod';
 
-if (String('<%= BUILD_TYPE %>') === 'prod') { enableProdMode(); }
+let buildType = String('<%= BUILD_TYPE %>');
 
-// Compile and launch the module with i18n providers
-// let TP = new TranslationProviders();
-// TP.getTranslationFile().then((providers: any) => {
-  // const options: any = { providers };
-  platformBrowserDynamic().bootstrapModule(AppModule/*, options*/);
-// });
+if (buildType === PRODUCTION_BUILD) {
+    enableProdMode();
 
-// In order to start the Service Worker located at "/worker-basic.[min.]js"
-// uncomment this line. More about Service Workers here
-// https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
-//
-// if ('serviceWorker' in navigator) {
-//   let workerScript = '/worker-basic';
-//   if (String('<%= BUILD_TYPE %>') === 'prod') { workerScript = workerScript + '.min'; }
-//   workerScript = workerScript + '.js';
-//   (<any>navigator).serviceWorker.register(workerScript).then((registration: any) =>
-//       console.log('ServiceWorker registration successful with scope: ', registration.scope))
-//     .catch((err: any) =>
-//       console.log('ServiceWorker registration failed: ', err));
-// }
+    console.log('Production Mode for Angular Runtime Initialized!');
+}
+
+platformBrowserDynamic().bootstrapModule(BootModule);
