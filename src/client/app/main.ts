@@ -1,5 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
+import './operators';
+
 import BootModule from './modules/boot/boot.module';
 
 const PRODUCTION_BUILD: string = 'prod';

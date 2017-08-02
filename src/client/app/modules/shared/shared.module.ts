@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import HeaderComponent from '../../components/header/header.component';
 import LayoutComponent from '../../components/layout/layout.component';
 import FooterComponent from '../../components/footer/footer.component';
@@ -12,7 +12,7 @@ import VacanciesComponent from '../../components/vacancies/vacancies.component';
 import sharedRouteEntries from '../../routing/shared/shared.routes';
 
 let MODULE_DECLARATIONS: any = {
-    imports: [sharedRouteEntries],
+    imports: [CommonModule, sharedRouteEntries],
     declarations: [
         LayoutComponent, HeaderComponent,
         FooterComponent, NavigationComponent,

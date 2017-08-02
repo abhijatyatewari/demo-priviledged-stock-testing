@@ -1,0 +1,26 @@
+<header id="head" class="secondary">
+</header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Customers</li>
+    </ol>
+
+    <br />
+
+    <div class='row'>
+        <div class='col-md-6'>
+            <customer-search-panel #searchPanel></customer-search-panel>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3" 
+            *ngFor="let customer of customers | where:'name':searchPanel.searchString">
+            <customer-viewer [customerInfo]='customer'></customer-viewer>
+        </div>
+    </div>
+</div>
